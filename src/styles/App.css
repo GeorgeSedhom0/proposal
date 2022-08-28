@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@keyframes leftFadeIn {
+  0% {
+    opacity: 0;
+    /* fade from the left but keep the x on -50% */
+    transform: translate(-25%, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0%, -50%);
+  }
+}
+.App {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+textarea {
+  width: 50%;
+  height: 25%;
+}
+.proposal {
+  width: 50%;
+  margin: auto;
+  background-color: lightgray;
+  border-radius: 1em;
+  padding: 1em;
+  white-space: pre-wrap;
+  cursor: pointer;
+  position: relative;
+}
+#copied {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 102%;
+  background-color: rgb(74, 132, 74);
+  color: white;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  text-align: center;
+  animation: leftFadeIn 0.5s ease-in-out forwards;
+}
