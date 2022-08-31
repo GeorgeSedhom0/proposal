@@ -8,15 +8,20 @@ import Proposal from "./Proposal";
 function App() {
   const [specialProposal, setSpecialProposal] = useState(``);
   const [devTools, setDevTools] = useState("vanilla JavaScript, HTML and CSS");
-
+  const [stack, setStack] = useState("Full-Stack");
   const [confedint, setConfedint] = useState(true);
 
   return (
     <div className="App">
-      <DevToolsPicker setDevTools={setDevTools} />
+      <DevToolsPicker
+        setDevTools={setDevTools}
+        stack={stack}
+        setStack={setStack}
+      />
       <SpecialProposalPicker
         setConfedint={setConfedint}
         confedint={confedint}
+        setSpecialProposal={setSpecialProposal}
       />
       <TextAreas
         specialProposal={specialProposal}
@@ -28,6 +33,7 @@ function App() {
         devTools={devTools}
         specialProposal={specialProposal}
         confedint={confedint}
+        stack={stack}
       />
     </div>
   );

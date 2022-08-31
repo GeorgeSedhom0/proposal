@@ -1,19 +1,24 @@
 import { useState } from "react";
 import "../styles/picker.css";
+import { Button } from "@mui/material";
 
-const DevToolsPicker = ({ setDevTools }) => {
+const DevToolsPicker = ({ setDevTools, stack, setStack }) => {
   const [typescript, setTypescript] = useState(true);
+  const [currentDevTools, setCurrentDevTools] = useState("vanilla");
   const language = typescript ? "TypeScript" : "JavaScript";
 
   const picker = {
     vanilla: `${
       language === "JavaScript" ? "Vanilla " : ""
     }${language} , HTML and CSS`,
-    React: `React.js with ${language}`,
+    react: `React.js with ${language}`,
     backend: `Node.js, Express.js, ${language}`,
   };
   const handleClick = (e) => {
-    setDevTools(picker[e.target.innerText]);
+    const text = e.target.innerText.toLowerCase();
+    setDevTools(picker[text]);
+    setCurrentDevTools(text);
+    console.log(text);
   };
   return (
     <div className="picker">
@@ -27,10 +32,39 @@ const DevToolsPicker = ({ setDevTools }) => {
           }}
           checked={typescript}
         />
+        <label htmlFor={"typescript"}>Full-stack</label>
+        <input
+          type="checkbox"
+          name="typescript"
+          onChange={() => {
+            stack === "Frontend"
+              ? setStack("Full-Stack")
+              : setStack("Frontend");
+          }}
+          checked={stack === "Full-Stack"}
+        />
       </div>
-      <button onClick={handleClick}>vanilla</button>
-      <button onClick={handleClick}>React</button>
-      <button onClick={handleClick}>backend</button>
+      <Button
+        variant={"contained"}
+        disabled={currentDevTools === "vanilla"}
+        onClick={handleClick}
+      >
+        vanilla
+      </Button>
+      <Button
+        variant={"contained"}
+        disabled={currentDevTools === "react"}
+        onClick={handleClick}
+      >
+        react
+      </Button>
+      <Button
+        variant={"contained"}
+        disabled={currentDevTools === "backend"}
+        onClick={handleClick}
+      >
+        backend
+      </Button>
     </div>
   );
 };

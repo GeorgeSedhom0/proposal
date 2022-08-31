@@ -1,6 +1,6 @@
 import { useLayoutEffect } from "react";
 
-const Proposal = ({ devTools, specialProposal, confedint }) => {
+const Proposal = ({ devTools, specialProposal, confedint, stack }) => {
   const confidance = confedint
     ? "I'm confident I can handle your request"
     : "I can work on your request";
@@ -25,7 +25,7 @@ const Proposal = ({ devTools, specialProposal, confedint }) => {
     <div className="proposal">
       Good evening,
       <br />
-      My name is George and I'm Udacity graduate full stack web developer <br />
+      My name is George and I'm Udacity graduate {stack} web developer <br />
       {confidance} using {devTools} <br />
       {specialProposal} <br />
       Thanks for taking the time to read my offer <br />
